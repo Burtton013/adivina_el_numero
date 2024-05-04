@@ -6,10 +6,9 @@ const currentScore = document.querySelector(".score");
 const bestScore = document.querySelector(".highscore");
 const backgroundBody = document.querySelector("body");
 const playAgain = document.querySelector(".again");
-
 // const guessing = Number(document.querySelector('.guess').value);
 
-//Creando funciones para simplificar el codigo
+//Creando funciones para hacer mas legible el código
 
 const displayMessage = (messageText) => {
   message.textContent = messageText;
@@ -37,17 +36,19 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 // console.log(secretNumber);
 
-//Iniciando logica el Juego
 
 checking.addEventListener("click", function guessingHandler() {
   const guessing = Number(document.querySelector(".guess").value);
 
+//LOGICA DEL JUEGO
+  
   //Jugador pone 0
 
   if (!guessing) {
-    displayMessage("Eso es un 0, no cuenta!");
+    displayMessage("Ese número no esta dentro del rango a adivinar, no cuenta!");
 
     //Jugador Gana
+    
   } else if (guessing === secretNumber) {
     // checking.removeEventListener('click', guessingHandler);
     displayMessage("FELICIDADEEEEEES HAZ GANADO!");
@@ -64,12 +65,13 @@ checking.addEventListener("click", function guessingHandler() {
     }
 
     //Jugador pierde
+    
   } else if (guessing !== secretNumber) {
     if (score > 1) {
+      
       //Jugador adivina
 
-      //Refactorizamos con operador ternario dentro de la funcion de displayMessage
-      displayMessage(guessing > secretNumber ? "Te pasaste..." : "Te falta...");
+      displayMessage(guessing > secretNumber ? "Te pasaste..." : "Te falta..."); //Refactorizamos con operador ternario dentro de la funcion de displayMessage
       displayCurrentScore(score);
       score--;
     } else {
@@ -82,7 +84,9 @@ checking.addEventListener("click", function guessingHandler() {
   }
 });
 
-//Reseteando el juego
+//RESETEO DEL JUEGO
+
+//Event lister para boton de reseteo
 
 playAgain.addEventListener("click", function () {
   score = 20;
