@@ -36,19 +36,17 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 // console.log(secretNumber);
 
-
 checking.addEventListener("click", function guessingHandler() {
   const guessing = Number(document.querySelector(".guess").value);
 
-//LOGICA DEL JUEGO
-  
+  //LOGICA DEL JUEGO
+
   //Jugador pone 0
 
   if (!guessing) {
-    displayMessage("Ese número no esta dentro del rango a adivinar, no cuenta!");
+    displayMessage("Eso es un 0, no cuenta!");
 
     //Jugador Gana
-    
   } else if (guessing === secretNumber) {
     // checking.removeEventListener('click', guessingHandler);
     displayMessage("FELICIDADEEEEEES HAZ GANADO!");
@@ -65,10 +63,8 @@ checking.addEventListener("click", function guessingHandler() {
     }
 
     //Jugador pierde
-    
   } else if (guessing !== secretNumber) {
     if (score > 1) {
-      
       //Jugador adivina
 
       displayMessage(guessing > secretNumber ? "Te pasaste..." : "Te falta..."); //Refactorizamos con operador ternario dentro de la funcion de displayMessage
